@@ -9,7 +9,7 @@ static FILE *tok_file = NULL;   // file to dump tokens, like a crime scene log
 static char *read_file(const char *filename) {
     FILE *f = fopen(filename, "rb");   // open a binary file (safer)
     if (!f) {
-        printf("bro cannot open file %s 💀\n", filename);
+        printf("Can't open file %s\n", filename);
         return NULL;
     }
 
@@ -19,7 +19,7 @@ static char *read_file(const char *filename) {
 
     char *buf = malloc(size + 1);
     if (!buf) {
-        printf("malloc died trying to allocate %ld bytes 💀\n", size);
+        printf("Malloc failed to allocate %ld bytes\n", size);
         fclose(f);
         return NULL;
     }
@@ -35,7 +35,7 @@ static char *read_file(const char *filename) {
 void init_lexer_from_file(const char *filename) {
     char *data = read_file(filename);  // read the file
     if (!data) {
-        printf("file read failed 😭\n");
+        printf("File Read failed\n");
         exit(1);
     }
 
